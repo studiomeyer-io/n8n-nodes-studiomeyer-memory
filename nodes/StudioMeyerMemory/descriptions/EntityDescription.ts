@@ -95,6 +95,15 @@ export const entityFields: INodeProperties[] = [
 		displayOptions: { show: { resource: ['entity'], operation: ['create'] } },
 	},
 	{
+		displayName: 'Project',
+		name: 'project',
+		type: 'string',
+		default: '',
+		placeholder: 'my-saas-bot',
+		description: 'Project this entity belongs to (optional)',
+		displayOptions: { show: { resource: ['entity'], operation: ['create'] } },
+	},
+	{
 		displayName: 'Initial Observations',
 		name: 'observations',
 		type: 'string',
@@ -105,27 +114,17 @@ export const entityFields: INodeProperties[] = [
 			'One observation per line. Each line is stored as a separate fact about the entity.',
 		displayOptions: { show: { resource: ['entity'], operation: ['create'] } },
 	},
-	{
-		displayName: 'Aliases',
-		name: 'aliases',
-		type: 'string',
-		default: '',
-		placeholder: 'Acme Bot,Support Bot v2',
-		description:
-			'Comma-separated alternative names so search finds the entity under multiple terms',
-		displayOptions: { show: { resource: ['entity'], operation: ['create'] } },
-	},
 
 	// ─── Observe ─────────────────────────────────────────────
 	{
-		displayName: 'Entity Name or ID',
+		displayName: 'Entity Name',
 		name: 'entityRef',
 		type: 'string',
 		default: '',
 		required: true,
 		placeholder: 'Acme Customer Support Bot',
 		description:
-			'Entity name (fuzzy-resolved) or UUID. Names are resolved case-insensitively.',
+			'Entity name (fuzzy-resolved). All observations on this run are attached to this entity.',
 		displayOptions: { show: { resource: ['entity'], operation: ['observe', 'open'] } },
 	},
 	{

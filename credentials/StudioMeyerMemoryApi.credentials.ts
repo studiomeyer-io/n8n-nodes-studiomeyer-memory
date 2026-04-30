@@ -69,6 +69,22 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 				'OAuth 2.1 access token. Use the n8n credential test to start the browser flow.',
 			displayOptions: { show: { authMode: ['oauth2'] } },
 		},
+		{
+			displayName: 'Allow Private Network',
+			name: 'allowPrivateNetwork',
+			type: 'boolean',
+			default: false,
+			description:
+				'Whether to allow private/loopback hostnames (127.0.0.1, RFC1918 ranges, .local, link-local). Off by default to prevent SSRF. Enable for self-hosted Memory inside the same Docker network.',
+		},
+		{
+			displayName: 'Request Timeout (ms)',
+			name: 'requestTimeoutMs',
+			type: 'number',
+			typeOptions: { minValue: 1000, maxValue: 300000 },
+			default: 30000,
+			description: 'Per-call timeout in milliseconds. Default 30 seconds, max 5 minutes.',
+		},
 	];
 
 	authenticate: IAuthenticateGeneric = {
