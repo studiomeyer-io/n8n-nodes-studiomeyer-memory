@@ -5,6 +5,24 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] — 2026-04-30
+
+Documentation hot-fix. No code changes. Targets the broken signup funnel that
+v0.1.0 documentation pointed users at.
+
+### Fixed
+
+- API Key credential description pointed at `memory.studiomeyer.io/dashboard/keys`
+  (does not exist). Corrected to `studiomeyer.io/portal/api`.
+- README Quick-start step 1 told users to sign up at `memory.studiomeyer.io`.
+  That host is the MCP server endpoint and has no signup form. Corrected to
+  `studiomeyer.io/signup` plus the dashboard link for existing users.
+- OAuth credential field claimed "browser flow" — but v0.1 ships only the
+  pre-issued access-token paste path. Updated description + Authentication
+  section to state the actual behavior (paste a token obtained via the OAuth
+  discovery doc and a PKCE flow). The fully integrated n8n OAuth2 credential
+  type with browser flow is moved to v0.2.
+
 ## [0.1.0] — 2026-04-30
 
 Initial release. Released after a full agent-code-review (Analyst + Critic +

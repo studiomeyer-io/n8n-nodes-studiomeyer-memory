@@ -39,7 +39,7 @@ npm install n8n-nodes-studiomeyer-memory
 
 ## Quick start
 
-1. **Get an API key.** Free tier covers 1.000 learnings + 100 entities. Sign up at [memory.studiomeyer.io](https://memory.studiomeyer.io).
+1. **Get an API key.** Sign up at [studiomeyer.io/signup](https://studiomeyer.io/signup), then copy your API key from the dashboard at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api). Free tier covers 1.000 learnings + 100 entities.
 2. **Add the credential in n8n.** Settings → Credentials → New → "StudioMeyer Memory API". Paste your key.
 3. **Drop the StudioMeyer Memory node into a workflow.** Pick a Resource (Memory / Entity / Session / Insight) and an Operation.
 
@@ -92,8 +92,8 @@ Higher-level synthesis.
 
 Two modes, same endpoint:
 
-- **API Key** (default). Paste a key from your dashboard. Fastest path.
-- **OAuth 2.1 + PKCE**. Browser-based magic-link sign-in, no copy-paste.
+- **API Key** (default, recommended). Paste a key from your portal at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api). Fastest path.
+- **OAuth 2.1 Access Token**. Pre-issued token from a PKCE flow against `memory.studiomeyer.io/authorize` + `/token`. The OAuth discovery doc is at [memory.studiomeyer.io/.well-known/oauth-authorization-server](https://memory.studiomeyer.io/.well-known/oauth-authorization-server). The fully integrated browser flow (n8n OAuth2 credential type) ships in v0.2.
 
 Both modes target `https://memory.studiomeyer.io/mcp`. Set a custom **Server URL** in the credential for self-hosted deployments.
 
@@ -136,8 +136,8 @@ Self-hosted is free under MIT for the client; the server is source-available wit
 
 ## Roadmap
 
-- **v0.1** (current): Memory / Entity / Session / Insight resources, API Key + OAuth credentials
-- **v0.2**: AI-Agent Memory Sub-Node (drops directly into the n8n AI Agent's Memory slot, replacing Postgres / Redis / Motorhead)
+- **v0.1** (current): Memory / Entity / Session / Insight resources, API Key auth, OAuth 2.1 access token (manual). v0.1.1 ships doc fixes (correct dashboard URL, clarified OAuth setup).
+- **v0.2**: AI-Agent Memory Sub-Node (drops directly into the n8n AI Agent's Memory slot, replacing Postgres / Redis / Motorhead). Dedicated n8n OAuth2 credential type with full browser-based PKCE flow.
 - **v0.3**: Streaming support for long search results, batch operations
 - **v0.4**: Workflow templates published to n8n.io marketplace
 

@@ -42,11 +42,11 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			type: 'options',
 			options: [
 				{ name: 'API Key', value: 'apiKey' },
-				{ name: 'OAuth 2.1 (Browser Flow)', value: 'oauth2' },
+				{ name: 'OAuth 2.1 Access Token', value: 'oauth2' },
 			],
 			default: 'apiKey',
 			description:
-				'API Key is the fastest path: paste a key from your dashboard. OAuth 2.1 opens a browser tab for sign-in (Magic Link, ~30 seconds, no copy-paste).',
+				'API Key is the recommended path — paste a key from your StudioMeyer portal. OAuth 2.1 accepts a pre-issued access token (full browser-based PKCE flow ships in v0.2 as a dedicated n8n OAuth2 credential type).',
 		},
 		{
 			displayName: 'API Key',
@@ -56,7 +56,7 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			default: '',
 			placeholder: 'sk_live_...',
 			description:
-				'Get your key from https://memory.studiomeyer.io/dashboard/keys. Free tier includes 1000 learnings + 100 entities.',
+				'Get your key from https://studiomeyer.io/portal/api (sign up at https://studiomeyer.io/signup if you do not have an account yet). Free tier includes 1.000 learnings + 100 entities.',
 			displayOptions: { show: { authMode: ['apiKey'] } },
 		},
 		{
@@ -66,7 +66,7 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			typeOptions: { password: true },
 			default: '',
 			description:
-				'OAuth 2.1 access token. Use the n8n credential test to start the browser flow.',
+				'Pre-issued OAuth 2.1 access token. Obtain via the OAuth discovery endpoint at memory.studiomeyer.io/.well-known/oauth-authorization-server and a PKCE flow against /authorize and /token. For most users: prefer API Key — full in-credential browser flow ships in v0.2.',
 			displayOptions: { show: { authMode: ['oauth2'] } },
 		},
 		{
