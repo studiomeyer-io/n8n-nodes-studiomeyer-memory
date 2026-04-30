@@ -11,6 +11,13 @@ Initial release. Released after a full agent-code-review (Analyst + Critic +
 Research) hardening round — the version below already incorporates every
 Round-2 finding before the first npm publish.
 
+End-to-end verified against the live `memory.studiomeyer.io` server:
+9/9 calls passed (4 read: search, recall-timeline, entity-search,
+proactive; 5 write: learn, decide, entity-create, entity-observe,
+synthesize). The corrected argument shapes were explicitly exercised
+and accepted by the server schema. The package was also installed into
+a running n8n v2.15.0 container (Node v24.13.1) without manifest errors.
+
 ### Added
 
 - `StudioMeyerMemory` node with four resources:
