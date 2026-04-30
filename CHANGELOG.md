@@ -5,6 +5,24 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] — 2026-04-30
+
+Documentation hot-fix #2. No code changes.
+
+The signup funnel changed: instead of a standalone /signup page (which v0.1.1
+pointed users at), the free API key is now activated inside the portal with
+a single button click after signing in via Google / GitHub / Discord / magic
+link. The signup page was removed.
+
+### Fixed
+
+- README quickstart and credential description point at
+  `studiomeyer.io/portal/login` (the unified sign-in entry) and explain that
+  one click inside the portal activates 200 free credits. The previous
+  `/signup` URL no longer exists.
+- Free-tier credit count corrected from 1.000 learnings to the actual 200
+  credits granted by the portal Server-Action `startFreeMemory()`.
+
 ## [0.1.1] — 2026-04-30
 
 Documentation hot-fix. No code changes. Targets the broken signup funnel that

@@ -39,7 +39,7 @@ npm install n8n-nodes-studiomeyer-memory
 
 ## Quick start
 
-1. **Get an API key.** Sign up at [studiomeyer.io/signup](https://studiomeyer.io/signup), then copy your API key from the dashboard at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api). Free tier covers 1.000 learnings + 100 entities.
+1. **Get an API key.** Sign in at [studiomeyer.io/portal/login](https://studiomeyer.io/portal/login) (Google, GitHub, Discord or email magic link). Inside the portal, click "Free Memory testen" — you get an API key with 200 free credits, no credit card. Copy the key from your dashboard at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api).
 2. **Add the credential in n8n.** Settings → Credentials → New → "StudioMeyer Memory API". Paste your key.
 3. **Drop the StudioMeyer Memory node into a workflow.** Pick a Resource (Memory / Entity / Session / Insight) and an Operation.
 
@@ -92,7 +92,7 @@ Higher-level synthesis.
 
 Two modes, same endpoint:
 
-- **API Key** (default, recommended). Paste a key from your portal at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api). Fastest path.
+- **API Key** (default, recommended). Paste a key from your portal at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api). First-time users sign in once at [/portal/login](https://studiomeyer.io/portal/login), click "Free Memory testen", and the API key appears in the dashboard. 200 credits, no card.
 - **OAuth 2.1 Access Token**. Pre-issued token from a PKCE flow against `memory.studiomeyer.io/authorize` + `/token`. The OAuth discovery doc is at [memory.studiomeyer.io/.well-known/oauth-authorization-server](https://memory.studiomeyer.io/.well-known/oauth-authorization-server). The fully integrated browser flow (n8n OAuth2 credential type) ships in v0.2.
 
 Both modes target `https://memory.studiomeyer.io/mcp`. Set a custom **Server URL** in the credential for self-hosted deployments.

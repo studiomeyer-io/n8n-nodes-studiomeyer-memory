@@ -56,7 +56,7 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			default: '',
 			placeholder: 'sk_live_...',
 			description:
-				'Get your key from https://studiomeyer.io/portal/api (sign up at https://studiomeyer.io/signup if you do not have an account yet). Free tier includes 1.000 learnings + 100 entities.',
+				'Sign in at https://studiomeyer.io/portal/login (Google / GitHub / Discord / magic link), then click "Free Memory testen" in the portal — you get an API key with 200 free credits, no credit card. Copy the key from https://studiomeyer.io/portal/api.',
 			displayOptions: { show: { authMode: ['apiKey'] } },
 		},
 		{
