@@ -1,0 +1,75 @@
+{
+  "name": "n8n-nodes-studiomeyer-memory",
+  "version": "0.1.0",
+  "description": "n8n community node for StudioMeyer Memory — long-term AI memory with knowledge graph, semantic search, entity tracking, and session continuity. 53 tools via MCP. Drop-in memory layer for AI agents in n8n.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "ai",
+    "memory",
+    "ai-agent",
+    "ai-memory",
+    "mcp",
+    "knowledge-graph",
+    "long-term-memory",
+    "studiomeyer"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/studiomeyer-io/n8n-nodes-studiomeyer-memory#readme",
+  "author": {
+    "name": "Matthias Meyer",
+    "email": "info@studiomeyer.io",
+    "url": "https://studiomeyer.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/studiomeyer-io/n8n-nodes-studiomeyer-memory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/studiomeyer-io/n8n-nodes-studiomeyer-memory/issues"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/StudioMeyerMemoryApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/StudioMeyerMemory/StudioMeyerMemory.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.0",
+    "n8n-workflow": "^1.82.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
