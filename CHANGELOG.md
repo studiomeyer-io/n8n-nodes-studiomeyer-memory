@@ -5,7 +5,17 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.2] — 2026-04-30
+## [Unreleased]
+
+Drift sweep alongside the n8n-templates external audit on 2026-05-01.
+
+### Fixed
+
+- **README Pricing section drift.** The Pricing block still claimed "Free tier (1000 learnings + 100 entities)" even though v0.1.2 explicitly corrected the count to **200 free credits** (one credit per operation). The doc-fix was applied to the Quick-Start section in v0.1.2 but the Pricing section was missed. Now consistent with the actual portal Server-Action `startFreeMemory()` behavior.
+- **README "source-available" claim.** The previous wording "the server is source-available with the SaaS-multi-tenant pieces under a separate license" was misleading. The Memory **server** lives in a private repo and is currently hosted SaaS only. Replaced with an honest "Hosting model" subsection: this node is MIT, the server is hosted-only today, contact for self-host commercial options. Removes the trust-erosion risk if a user clones the node and goes looking for the server source.
+- **README Roadmap v0.1 entry.** Wording updated to reflect that the latest published version is 0.1.2 (was "0.1.1 ships doc fixes" - we are past that). Added explicit v0.2 commitment to **bundle `@modelcontextprotocol/sdk` into the published artifact** for n8n Verified Community Nodes "Zero Runtime Dependencies" requirement (deadline was 1 May 2026 - the v0.1.x line is shipped as Unverified). Honest about the verified-status timing instead of leaving it ambiguous.
+
+## [0.1.2] - 2026-04-30
 
 Documentation hot-fix #2. No code changes.
 
@@ -23,7 +33,7 @@ link. The signup page was removed.
 - Free-tier credit count corrected from 1.000 learnings to the actual 200
   credits granted by the portal Server-Action `startFreeMemory()`.
 
-## [0.1.1] — 2026-04-30
+## [0.1.1] - 2026-04-30
 
 Documentation hot-fix. No code changes. Targets the broken signup funnel that
 v0.1.0 documentation pointed users at.
@@ -35,16 +45,16 @@ v0.1.0 documentation pointed users at.
 - README Quick-start step 1 told users to sign up at `memory.studiomeyer.io`.
   That host is the MCP server endpoint and has no signup form. Corrected to
   `studiomeyer.io/signup` plus the dashboard link for existing users.
-- OAuth credential field claimed "browser flow" — but v0.1 ships only the
+- OAuth credential field claimed "browser flow" - but v0.1 ships only the
   pre-issued access-token paste path. Updated description + Authentication
   section to state the actual behavior (paste a token obtained via the OAuth
   discovery doc and a PKCE flow). The fully integrated n8n OAuth2 credential
   type with browser flow is moved to v0.2.
 
-## [0.1.0] — 2026-04-30
+## [0.1.0] - 2026-04-30
 
 Initial release. Released after a full agent-code-review (Analyst + Critic +
-Research) hardening round — the version below already incorporates every
+Research) hardening round - the version below already incorporates every
 Round-2 finding before the first npm publish.
 
 End-to-end verified against the live `memory.studiomeyer.io` server:
@@ -81,17 +91,17 @@ a running n8n v2.15.0 container (Node v24.13.1) without manifest errors.
 ### Hardened (agent-code-review Round 2)
 
 - Tool argument shapes verified against the upstream MCP server schemas
-  (`mcp-nex` v3.16.10) — the following operations were corrected before
+  (`mcp-nex` v3.16.10) - the following operations were corrected before
   shipping:
   - `entity.create` now sends the required `entities[]` envelope with
-    `observations: [{ content, source }]` — the previous flat shape and
+    `observations: [{ content, source }]` - the previous flat shape and
     the unsupported `aliases` field would have failed at runtime.
   - `entity.observe` now sends `observations: [{ entityName, content,
-    source }]` — the previous top-level `entityRef` was rejected.
+    source }]` - the previous top-level `entityRef` was rejected.
   - `entity.relate` now sends the `relations[]` envelope with
-    `fromName` / `toName` — the previous `fromEntity` / `toEntity` keys
+    `fromName` / `toName` - the previous `fromEntity` / `toEntity` keys
     did not exist on the server.
-  - `entity.open` now uses `name` — the previous `entityRef` did not
+  - `entity.open` now uses `name` - the previous `entityRef` did not
     exist on the server.
   - `memory.decide` sends `reasoning` (not `rationale`), auto-derives a
     `title`, and removes the unsupported `status` field.
@@ -100,13 +110,13 @@ a running n8n v2.15.0 container (Node v24.13.1) without manifest errors.
   - `insight.synthesize` sends the required `action` and uses `topic`.
 - SSRF guard: `buildMcpEndpoint` rejects `file://`, `gopher://`, and
   other non-http(s) protocols; rejects loopback, RFC1918, link-local
-  (169.254.x — incl. AWS / GCP / Azure metadata), `.local` and
+  (169.254.x - incl. AWS / GCP / Azure metadata), `.local` and
   `.internal` hostnames unless `Allow Private Network` is enabled.
 - Empty / whitespace-only Server URL is now rejected with a clear error.
 
 ### Deferred
 
-- AI-Agent Memory Sub-Node (planned for v0.2 — needs live Langchain
+- AI-Agent Memory Sub-Node (planned for v0.2 - needs live Langchain
   interface validation against the current n8n AI Agent node).
 - Connection reuse across items via a shared MCP client (planned
   alongside v0.2 once the SDK exposes a stable hook).

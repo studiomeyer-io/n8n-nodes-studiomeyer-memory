@@ -13,13 +13,13 @@ n8n's built-in memory options (Postgres, Redis, Motorhead) handle short-term con
 - **Knowledge graph** with typed entities (people, projects, services) and relations
 - **Bi-temporal tracking** so you can query "what did we know about X on date Y?"
 - **Confidence + decay** so old contradicted facts fade automatically
-- **Multi-tenant on Supabase EU** — DSGVO-compliant by default
+- **Multi-tenant on Supabase EU** - DSGVO-compliant by default
 
 This community node connects your n8n workflows to a hosted or self-hosted Memory server and exposes the most useful operations as a clean Resource/Operation tree.
 
 ## Why this matters
 
-A voice agent that remembers callers across sessions. A customer support bot that knows the customer's preferences from three months ago. A personal assistant that builds a profile of you over years, not minutes. n8n is the perfect glue layer — but it lacks a real long-term memory primitive. This node fills that gap.
+A voice agent that remembers callers across sessions. A customer support bot that knows the customer's preferences from three months ago. A personal assistant that builds a profile of you over years, not minutes. n8n is the perfect glue layer - but it lacks a real long-term memory primitive. This node fills that gap.
 
 ## Install
 
@@ -39,7 +39,7 @@ npm install n8n-nodes-studiomeyer-memory
 
 ## Quick start
 
-1. **Get an API key.** Sign in at [studiomeyer.io/portal/login](https://studiomeyer.io/portal/login) (Google, GitHub, Discord or email magic link). Inside the portal, click "Free Memory testen" — you get an API key with 200 free credits, no credit card. Copy the key from your dashboard at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api).
+1. **Get an API key.** Sign in at [studiomeyer.io/portal/login](https://studiomeyer.io/portal/login) (Google, GitHub, Discord or email magic link). Inside the portal, click "Free Memory testen" - you get an API key with 200 free credits, no credit card. Copy the key from your dashboard at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api).
 2. **Add the credential in n8n.** Settings → Credentials → New → "StudioMeyer Memory API". Paste your key.
 3. **Drop the StudioMeyer Memory node into a workflow.** Pick a Resource (Memory / Entity / Session / Insight) and an Operation.
 
@@ -86,7 +86,7 @@ Higher-level synthesis.
 |---|---|---|
 | **Synthesize** | `nex_synthesize` | Cluster recent learnings into an insight |
 | **Reflect** | `nex_reflect` | Surface emerging patterns + contradictions |
-| **Proactive Briefing** | `nex_proactive` | Status briefing — stale learnings, open decisions, knowledge gaps |
+| **Proactive Briefing** | `nex_proactive` | Status briefing - stale learnings, open decisions, knowledge gaps |
 
 ## Authentication
 
@@ -130,14 +130,14 @@ Telegram Trigger
 
 ## Pricing
 
-Free tier (1000 learnings + 100 entities) is enough for a single bot in development. Pro is €29/month and lifts the limits. Team is €49/month with multi-agent isolation. See [studiomeyer.io/services/memory](https://studiomeyer.io/services/memory) for the latest pricing.
+Free tier is **200 free credits** activated by one click inside the portal at [studiomeyer.io/portal/login](https://studiomeyer.io/portal/login) (no card). Each operation (search, learn, entity-create, etc.) consumes one credit. Enough to evaluate the node and run a single bot in development. Pro is €29/month and lifts the limit to a generous monthly cap. Team is €49/month with multi-agent isolation. See [studiomeyer.io/services/memory](https://studiomeyer.io/services/memory) for the latest pricing and the per-tier cap.
 
-Self-hosted is free under MIT for the client; the server is source-available with the SaaS-multi-tenant pieces under a separate license. Contact for self-hosted licensing details.
+**Hosting model.** This community node and its tests are MIT-licensed (use the node anywhere, commercial OK). The Memory **server** is currently hosted SaaS only (EU Frankfurt, Hetzner) - it is not self-hostable today. The server source lives in a private repo. If self-hosting is a hard requirement for your deployment (sovereignty, air-gap, customer contract), contact [hello@studiomeyer.io](mailto:hello@studiomeyer.io) about a commercial source-grant or managed-on-your-infra option.
 
 ## Roadmap
 
-- **v0.1** (current): Memory / Entity / Session / Insight resources, API Key auth, OAuth 2.1 access token (manual). v0.1.1 ships doc fixes (correct dashboard URL, clarified OAuth setup).
-- **v0.2**: AI-Agent Memory Sub-Node (drops directly into the n8n AI Agent's Memory slot, replacing Postgres / Redis / Motorhead). Dedicated n8n OAuth2 credential type with full browser-based PKCE flow.
+- **v0.1** (current, latest published v0.1.2): Memory / Entity / Session / Insight resources, API Key auth, OAuth 2.1 access token (paste a pre-issued token from a PKCE flow). v0.1.1 + v0.1.2 are documentation hot-fixes (corrected portal URL, free-tier credit count, signup flow).
+- **v0.2**: AI-Agent Memory Sub-Node (drops directly into the n8n AI Agent's Memory slot, replacing Postgres / Redis / Motorhead). Dedicated n8n OAuth2 credential type with full browser-based PKCE flow. **Bundle `@modelcontextprotocol/sdk` into the published artifact** to satisfy the n8n Verified Community Nodes "Zero Runtime Dependencies" requirement (deadline was 1 May 2026 - the v0.1.x line is shipped as an Unverified community node; Verified-status submission ships with v0.2 once SDK bundling lands and is smoke-tested).
 - **v0.3**: Streaming support for long search results, batch operations
 - **v0.4**: Workflow templates published to n8n.io marketplace
 
@@ -166,7 +166,7 @@ Pull requests welcome. Please open an issue first for non-trivial changes.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
 
 ## Links
 
