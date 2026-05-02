@@ -15,7 +15,7 @@ n8n's built-in memory options (Postgres, Redis, Motorhead) handle short-term con
 - **Confidence + decay** so old contradicted facts fade automatically
 - **Multi-tenant on Supabase EU** - DSGVO-compliant by default
 
-This community node connects your n8n workflows to a hosted or self-hosted Memory server and exposes the most useful operations as a clean Resource/Operation tree.
+This community node connects your n8n workflows to the StudioMeyer Memory MCP server (hosted SaaS at `memory.studiomeyer.io`) and exposes the most useful operations as a clean Resource/Operation tree. The custom **Server URL** field in the credential lets enterprise customers point at a managed-on-your-infra deployment after a commercial agreement, the public self-host bundle is a planned v0.2 release.
 
 ## Why this matters
 
@@ -31,7 +31,7 @@ Enter the package name:
 n8n-nodes-studiomeyer-memory
 ```
 
-Or via npm in self-hosted setups:
+Or via npm if you self-host n8n:
 
 ```bash
 npm install n8n-nodes-studiomeyer-memory
@@ -95,7 +95,7 @@ Two modes, same endpoint:
 - **API Key** (default, recommended). Paste a key from your portal at [studiomeyer.io/portal/api](https://studiomeyer.io/portal/api). First-time users sign in once at [/portal/login](https://studiomeyer.io/portal/login), click "Free Memory testen", and the API key appears in the dashboard. 200 credits, no card.
 - **OAuth 2.1 Access Token**. Pre-issued token from a PKCE flow against `memory.studiomeyer.io/authorize` + `/token`. The OAuth discovery doc is at [memory.studiomeyer.io/.well-known/oauth-authorization-server](https://memory.studiomeyer.io/.well-known/oauth-authorization-server). The fully integrated browser flow (n8n OAuth2 credential type) ships in v0.2.
 
-Both modes target `https://memory.studiomeyer.io/mcp`. Set a custom **Server URL** in the credential for self-hosted deployments.
+Both modes target `https://memory.studiomeyer.io/mcp`. The custom **Server URL** field is intended for managed-on-your-infra enterprise deployments (server source under commercial source-grant); a public self-host bundle is a planned v0.2 release.
 
 ## Recipes
 

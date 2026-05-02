@@ -5,6 +5,31 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2026-05-02
+
+Patch release on the back of an external audit on the public repo
+(2026-05-02 morning). Two doc / version-drift items, no behavior
+change for end users.
+
+### Fixed
+
+- **`PACKAGE_VERSION` drift in `McpClient.ts`.** The `Client` handshake
+  with the StudioMeyer Memory MCP server identified itself as
+  `version: '0.1.0'` even after `package.json` had moved to `0.1.2`.
+  The constant is now imported directly from `package.json` via
+  `import { name as PACKAGE_NAME, version as PACKAGE_VERSION }
+  from '../../package.json'`, so future bumps stay in sync without
+  a separate edit. `tsconfig.json` already had `resolveJsonModule:
+  true` and the build copies `package.json` into `dist/` so the
+  runtime resolution matches the published artifact.
+- **README hosting / self-host claim consistency.** The intro line
+  said "hosted or self-hosted Memory server" while a later section
+  said the Memory server "is not self-hostable today". The intro
+  and the "Authentication" / "Quick start" sections are now aligned:
+  hosted SaaS at `memory.studiomeyer.io`, custom Server URL field
+  for managed-on-your-infra commercial deployments, public self-host
+  bundle planned for v0.2. Roadmap section unchanged.
+
 ## [Unreleased]
 
 Drift sweep alongside the n8n-templates external audit on 2026-05-01.

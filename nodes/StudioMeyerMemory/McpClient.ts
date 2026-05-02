@@ -4,8 +4,10 @@ import type { IExecuteFunctions } from 'n8n-workflow';
 import { ApplicationError, NodeApiError } from 'n8n-workflow';
 import { isIP } from 'node:net';
 
-const PACKAGE_NAME = 'n8n-nodes-studiomeyer-memory';
-const PACKAGE_VERSION = '0.1.0';
+// Imported from package.json so the User-Agent always matches the published
+// package version. tsconfig has `resolveJsonModule: true`, the json file is
+// in the `include` list, and the build copies it into dist alongside.
+import { name as PACKAGE_NAME, version as PACKAGE_VERSION } from '../../package.json';
 const DEFAULT_TIMEOUT_MS = 30_000;
 const MAX_RESPONSE_BYTES = 5 * 1024 * 1024; // 5 MB hard cap on parsed text
 
