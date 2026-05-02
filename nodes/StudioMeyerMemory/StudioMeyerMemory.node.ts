@@ -173,7 +173,7 @@ export function buildToolCall(
 			};
 
 		case 'memory.learn':
-			// nex_learn does not accept `importance` — the server schema only
+			// nex_learn does not accept `importance` ,  the server schema only
 			// knows confidence + memoryType + source (verified S947).
 			return {
 				tool: 'nex_learn',
@@ -208,7 +208,7 @@ export function buildToolCall(
 		// ─── Entity ──────────────────────────────────────────
 		case 'entity.create': {
 			// nex_entity_create expects { entities: [{ name, entityType,
-			// observations: [{ content, source? }] }] } — array form, not flat.
+			// observations: [{ content, source? }] }] } ,  array form, not flat.
 			// `aliases` does NOT exist in the server schema (verified S947).
 			const entityName = getParam('name') as string;
 			const observationLines = parseLines(getParam('observations', '') as string);

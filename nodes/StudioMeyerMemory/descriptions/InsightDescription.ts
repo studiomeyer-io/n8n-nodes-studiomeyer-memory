@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 /**
- * Insight resource — higher-level synthesis on top of stored memory.
+ * Insight resource: higher-level synthesis on top of stored memory.
  *
  * Maps to:
  *   Synthesize → nex_synthesize
@@ -22,7 +22,7 @@ export const insightOperations: INodeProperties[] = [
 				value: 'proactive',
 				action: 'Get a proactive briefing',
 				description:
-					'A status briefing for the current memory state — useful at session start',
+					'A status briefing for the current memory state, useful at session start',
 			},
 			{
 				name: 'Reflect',

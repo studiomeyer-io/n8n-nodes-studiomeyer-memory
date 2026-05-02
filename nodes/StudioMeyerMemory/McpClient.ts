@@ -47,7 +47,7 @@ function resolveBearerToken(
 
 /**
  * Hostnames that resolve to private/loopback/link-local ranges.
- * The check is intentionally conservative — when in doubt we block and let
+ * The check is intentionally conservative ,  when in doubt we block and let
  * the user opt in via the `allowPrivateNetwork` credential flag.
  */
 function isPrivateOrLoopbackHostname(hostname: string): boolean {
@@ -80,7 +80,7 @@ function isPrivateOrLoopbackHostname(hostname: string): boolean {
 		if (a === 10) return true;
 		if (a === 172 && b >= 16 && b <= 31) return true;
 		if (a === 192 && b === 168) return true;
-		// Link-local 169.254.0.0/16 — incl. AWS / GCP / Azure metadata
+		// Link-local 169.254.0.0/16 ,  incl. AWS / GCP / Azure metadata
 		if (a === 169 && b === 254) return true;
 		// Multicast + reserved
 		if (a >= 224) return true;
@@ -96,7 +96,7 @@ function isPrivateOrLoopbackHostname(hostname: string): boolean {
 		if (/^fc[0-9a-f]{2}:/.test(v6) || /^fd[0-9a-f]{2}:/.test(v6)) return true;
 		// Link-local fe80::/10
 		if (/^fe[89ab][0-9a-f]:/.test(v6)) return true;
-		// IPv4-mapped ::ffff:127.0.0.1 etc — strip prefix and recurse
+		// IPv4-mapped ::ffff:127.0.0.1 etc ,  strip prefix and recurse
 		const v4Mapped = /^::ffff:(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/i.exec(v6);
 		if (v4Mapped) return isPrivateOrLoopbackHostname(v4Mapped[1]);
 	}

@@ -63,7 +63,7 @@ describe('buildToolCall', () => {
 			expect(result.args.tags).toEqual(['must-read', 'voice', 'ux']);
 			expect(result.args.confidence).toBe(0.9);
 			expect(result.args.source).toBe('session');
-			// Server schema rejects unknown fields — `importance` must not be sent.
+			// Server schema rejects unknown fields ,  `importance` must not be sent.
 			expect(result.args).not.toHaveProperty('importance');
 		});
 

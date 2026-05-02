@@ -46,7 +46,7 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			],
 			default: 'apiKey',
 			description:
-				'API Key is the recommended path — paste a key from your StudioMeyer portal. OAuth 2.1 accepts a pre-issued access token (full browser-based PKCE flow ships in v0.2 as a dedicated n8n OAuth2 credential type).',
+				'API Key is the recommended path. Paste a key from your StudioMeyer portal. OAuth 2.1 accepts a pre-issued access token (full browser-based PKCE flow ships in v0.2 as a dedicated n8n OAuth2 credential type).',
 		},
 		{
 			displayName: 'API Key',
@@ -56,7 +56,7 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			default: '',
 			placeholder: 'sk_live_...',
 			description:
-				'Sign in at https://studiomeyer.io/portal/login (Google / GitHub / Discord / magic link), then click "Free Memory testen" in the portal — you get an API key with 200 free credits, no credit card. Copy the key from https://studiomeyer.io/portal/api.',
+				'Sign in at https://studiomeyer.io/portal/login (Google / GitHub / Discord / magic link), then click "Free Memory testen" in the portal. You get an API key with 200 free credits, no credit card. Copy the key from https://studiomeyer.io/portal/api.',
 			displayOptions: { show: { authMode: ['apiKey'] } },
 		},
 		{
@@ -66,7 +66,7 @@ export class StudioMeyerMemoryApi implements ICredentialType {
 			typeOptions: { password: true },
 			default: '',
 			description:
-				'Pre-issued OAuth 2.1 access token. Obtain via the OAuth discovery endpoint at memory.studiomeyer.io/.well-known/oauth-authorization-server and a PKCE flow against /authorize and /token. For most users: prefer API Key — full in-credential browser flow ships in v0.2.',
+				'Pre-issued OAuth 2.1 access token. Obtain via the OAuth discovery endpoint at memory.studiomeyer.io/.well-known/oauth-authorization-server and a PKCE flow against /authorize and /token. For most users prefer API Key. Full in-credential browser flow ships in v0.2.',
 			displayOptions: { show: { authMode: ['oauth2'] } },
 		},
 		{

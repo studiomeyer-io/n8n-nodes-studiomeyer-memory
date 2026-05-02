@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 /**
- * Memory resource — the four primary write/read operations.
+ * Memory resource: the four primary write/read operations.
  *
  * Maps to the canonical Nex tools:
  *   Search  → nex_search
@@ -56,7 +56,7 @@ export const memoryFields: INodeProperties[] = [
 		default: '',
 		required: true,
 		placeholder: 'authentication setup last week',
-		description: 'Search query — fuzzy matching, no need for exact wording',
+		description: 'Search query, fuzzy matching, no need for exact wording',
 		displayOptions: {
 			show: { resource: ['memory'], operation: ['search', 'recall'] },
 		},
@@ -135,7 +135,7 @@ export const memoryFields: INodeProperties[] = [
 			{ name: 'Workflow', value: 'workflow' },
 		],
 		default: 'insight',
-		description: 'Type of learning — drives downstream filtering',
+		description: 'Type of learning. Drives downstream filtering.',
 		displayOptions: { show: { resource: ['memory'], operation: ['learn'] } },
 	},
 	{
@@ -186,7 +186,7 @@ export const memoryFields: INodeProperties[] = [
 		typeOptions: { rows: 4 },
 		default: '',
 		required: true,
-		description: 'Why this decision — the rationale future sessions will read',
+		description: 'Why this decision. The rationale future sessions will read.',
 		displayOptions: { show: { resource: ['memory'], operation: ['decide'] } },
 	},
 	{
@@ -204,7 +204,7 @@ export const memoryFields: INodeProperties[] = [
 		type: 'string',
 		typeOptions: { rows: 2 },
 		default: '',
-		description: 'What other options existed — useful for revisiting later',
+		description: 'What other options existed. Useful for revisiting later.',
 		displayOptions: { show: { resource: ['memory'], operation: ['decide'] } },
 	},
 	{

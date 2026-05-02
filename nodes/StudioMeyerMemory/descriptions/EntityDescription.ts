@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 /**
- * Entity resource — knowledge graph operations.
+ * Entity resource: knowledge graph operations.
  *
  * Maps to the canonical Nex tools:
  *   Create   → nex_entity_create

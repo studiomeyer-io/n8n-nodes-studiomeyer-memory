@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 /**
- * Session resource — start, end, and replay agent sessions.
+ * Session resource: start, end, and replay agent sessions.
  *
  * Maps to:
  *   Start          → nex_session_start
