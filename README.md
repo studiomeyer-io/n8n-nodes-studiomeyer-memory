@@ -1,6 +1,13 @@
 # n8n-nodes-studiomeyer-memory
 
-Long-term AI memory for n8n agents. Drop-in memory layer with knowledge graph, semantic search, entity tracking, and session continuity. Powered by [StudioMeyer Memory](https://studiomeyer.io/services/memory).
+
+<!-- badges -->
+[![npm version](https://img.shields.io/npm/v/n8n-nodes-studiomeyer-memory?style=flat-square&color=cb3837&logo=npm&label=npm)](https://www.npmjs.com/package/n8n-nodes-studiomeyer-memory)
+[![npm downloads](https://img.shields.io/npm/dm/n8n-nodes-studiomeyer-memory?style=flat-square&color=cb3837&logo=npm&label=installs%2Fmo)](https://www.npmjs.com/package/n8n-nodes-studiomeyer-memory)
+![License](https://img.shields.io/github/license/studiomeyer-io/n8n-nodes-studiomeyer-memory?style=flat-square&color=22c55e&label=license)
+![Last commit](https://img.shields.io/github/last-commit/studiomeyer-io/n8n-nodes-studiomeyer-memory?style=flat-square&color=88c0d0&label=updated)
+![GitHub stars](https://img.shields.io/github/stars/studiomeyer-io/n8n-nodes-studiomeyer-memory?style=flat-square&color=ffd700&logo=github&label=stars)
+<!-- /badges -->Long-term AI memory for n8n agents. Drop-in memory layer with knowledge graph, semantic search, entity tracking, and session continuity. Powered by [StudioMeyer Memory](https://studiomeyer.io/services/memory).
 
 [![npm version](https://img.shields.io/npm/v/n8n-nodes-studiomeyer-memory)](https://www.npmjs.com/package/n8n-nodes-studiomeyer-memory)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
