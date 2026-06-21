@@ -23,10 +23,14 @@ interface McpCredentials {
 /**
  * Resolve the bearer token for the active auth mode.
  * Throws a typed n8n error if the credential is missing/empty.
+ *
+ * `itemIndex` is attached to the thrown error so n8n can point the user at
+ * the exact input row that failed in a batched workflow.
  */
 function resolveBearerToken(
 	context: IExecuteFunctions,
 	credentials: McpCredentials,
+	itemIndex = 0,
 ): string {
 	const token =
 		credentials.authMode === 'oauth2'
@@ -34,12 +38,16 @@ function resolveBearerToken(
 			: credentials.apiKey;
 
 	if (!token || token.trim().length === 0) {
-		throw new NodeApiError(context.getNode(), {
-			message:
-				credentials.authMode === 'oauth2'
-					? 'OAuth access token missing. Re-authenticate the credential.'
-					: 'API key missing. Paste a key from https://memory.studiomeyer.io/dashboard/keys.',
-		});
+		throw new NodeApiError(
+			context.getNode(),
+			{
+				message:
+					credentials.authMode === 'oauth2'
+						? 'OAuth access token missing. Re-authenticate the credential.'
+						: 'API key missing. Paste a key from https://studiomeyer.io/portal/api.',
+			},
+			{ itemIndex },
+		);
 	}
 
 	return token;
@@ -165,8 +173,9 @@ interface CallSession {
 export function prepareCallSession(
 	context: IExecuteFunctions,
 	credentials: McpCredentials,
+	itemIndex = 0,
 ): CallSession {
-	const bearer = resolveBearerToken(context, credentials);
+	const bearer = resolveBearerToken(context, credentials, itemIndex);
 	const url = buildMcpEndpoint(credentials.baseUrl, {
 		allowPrivateNetwork: credentials.allowPrivateNetwork === true,
 	});
@@ -190,6 +199,7 @@ export async function callMemoryTool(
 	session: CallSession,
 	toolName: string,
 	args: Record<string, unknown>,
+	itemIndex = 0,
 ): Promise<unknown> {
 	const controller = new AbortController();
 	const timer = setTimeout(() => controller.abort(), session.timeoutMs);
@@ -228,10 +238,14 @@ export async function callMemoryTool(
 						.join('\n')
 						.trim()
 				: 'Tool returned an error';
-			throw new NodeApiError(context.getNode(), {
-				message: message || 'Tool returned an error',
-				description: `Tool: ${toolName}`,
-			});
+			throw new NodeApiError(
+				context.getNode(),
+				{
+					message: message || 'Tool returned an error',
+					description: `Tool: ${toolName}`,
+				},
+				{ itemIndex },
+			);
 		}
 
 		return parseToolResult(result);
@@ -247,7 +261,7 @@ export async function callMemoryTool(
 					: err?.message ?? String(error),
 				name: err?.name ?? 'Error',
 			},
-			{ message: `Memory call failed: ${toolName}` },
+			{ message: `Memory call failed: ${toolName}`, itemIndex },
 		);
 	} finally {
 		clearTimeout(timer);

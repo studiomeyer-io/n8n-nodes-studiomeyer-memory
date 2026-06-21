@@ -102,7 +102,7 @@ export class StudioMeyerMemory implements INodeType {
 						this.getNodeParameter(name, i, fallback as never) as unknown,
 				);
 
-				const data = await callMemoryTool(this, session, tool, pruneArgs(args));
+				const data = await callMemoryTool(this, session, tool, pruneArgs(args), i);
 
 				results.push({
 					json:
@@ -114,7 +114,7 @@ export class StudioMeyerMemory implements INodeType {
 			} catch (error) {
 				if (this.continueOnFail()) {
 					results.push({
-						json: { error: (error as Error).message },
+						json: { error: describeError(error), itemIndex: i },
 						pairedItem: { item: i },
 					});
 					continue;
@@ -357,6 +357,24 @@ export function buildToolCall(
 		default:
 			throw new ApplicationError(`Unsupported resource/operation: ${r}`);
 	}
+}
+
+/**
+ * Best-effort human-readable error string for the continueOnFail output.
+ *
+ * The MCP layer wraps failures in a NodeApiError whose top-level `message` is a
+ * friendly label ("Memory call failed: <tool>") and whose `description` carries
+ * the underlying cause (e.g. "HTTP 401 Unauthorized"). On the error-output path
+ * we want both, so downstream nodes can actually act on the failure.
+ */
+function describeError(error: unknown): string {
+	const message = (error as { message?: unknown })?.message;
+	const description = (error as { description?: unknown })?.description;
+	const msg = typeof message === 'string' && message.length > 0 ? message : 'Unknown error';
+	if (typeof description === 'string' && description.length > 0 && description !== msg) {
+		return `${msg}: ${description}`;
+	}
+	return msg;
 }
 
 function parseCsv(input: string): string[] {
