@@ -157,7 +157,7 @@ Free tier is **200 free credits** activated by one click inside the portal at [s
 
 ## Roadmap
 
-- **v0.1** (current, latest published v0.1.2): Memory / Entity / Session / Insight resources, API Key auth, OAuth 2.1 access token (paste a pre-issued token from a PKCE flow). v0.1.1 + v0.1.2 are documentation hot-fixes (corrected portal URL, free-tier credit count, signup flow).
+- **v0.1** (current, latest published v0.1.4): Memory / Entity / Session / Insight resources, API Key auth, OAuth 2.1 access token (paste a pre-issued token from a PKCE flow). The v0.1.1 - v0.1.4 patch line covers documentation hot-fixes (portal URL, free-tier credit count, signup flow) plus a robustness pass in v0.1.4 (errors carry the failing `itemIndex`, richer `continueOnFail` output, 97 unit tests).
 - **v0.2**: AI-Agent Memory Sub-Node (drops directly into the n8n AI Agent's Memory slot, replacing Postgres / Redis / Motorhead). Dedicated n8n OAuth2 credential type with full browser-based PKCE flow. **Bundle `@modelcontextprotocol/sdk` into the published artifact** to satisfy the n8n Verified Community Nodes "Zero Runtime Dependencies" requirement (deadline was 1 May 2026 - the v0.1.x line is shipped as an Unverified community node; Verified-status submission ships with v0.2 once SDK bundling lands and is smoke-tested).
 - **v0.3**: Streaming support for long search results, batch operations
 - **v0.4**: Workflow templates published to n8n.io marketplace

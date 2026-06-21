@@ -5,6 +5,55 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-06-21
+
+Robustness + test-coverage patch from a focused external review. No
+change to the Resource/Operation surface or the credential fields. The
+only user-visible difference is better error reporting.
+
+### Changed
+
+- **Errors now carry the failing `itemIndex`.** Every `NodeApiError`
+  thrown from the MCP layer (`callMemoryTool`, `resolveBearerToken`)
+  now attaches the input-row index, threaded down from the node's
+  `execute()` loop. In a batched workflow n8n can point at the exact
+  item that failed instead of just "the node failed". This is the
+  behaviour the `n8n-nodes-base/node-execute-block-error-missing-item-index`
+  convention exists to enforce.
+- **Richer `continueOnFail` output.** When `Continue On Fail` is on, the
+  error item now surfaces both the friendly wrapper *and* the underlying
+  cause (a `NodeApiError` keeps the cause on `.description`, which the
+  previous `(error as Error).message` dropped) plus the `itemIndex`.
+  Downstream nodes on the error branch can now actually see *why* a call
+  failed (e.g. `Memory call failed: nex_search: HTTP 401 Unauthorized`).
+
+### Fixed
+
+- **Stale API-key URL in the runtime error message.** The "API key
+  missing" error in `resolveBearerToken` still pointed at
+  `memory.studiomeyer.io/dashboard/keys` - the dead URL that v0.1.1
+  corrected everywhere *else* (README + credential description now use
+  `studiomeyer.io/portal/api`). The error message is now consistent with
+  the rest of the package.
+
+### Tests
+
+- Coverage expanded from 58 to 97 unit tests. New suites:
+  - `prepareCallSession.test.ts` - bearer selection per auth mode, the
+    timeout-clamping branches (default / valid / over-max cap / zero /
+    negative / non-numeric), missing-credential errors with `itemIndex`,
+    and the SSRF guard passthrough.
+  - `callMemoryTool.test.ts` - the full MCP round-trip with the
+    `@modelcontextprotocol/sdk` mocked: success parse, `structuredContent`
+    passthrough, `Authorization` header, `isError` tool-error promotion,
+    transport/connect failure, non-2xx `callTool` failure, abort/timeout
+    message, best-effort `close()` on every path, and `itemIndex`
+    propagation.
+  - `executeNode.test.ts` - the node `execute()` loop: per-item output +
+    `pairedItem`, primitive/array result wrapping under `value`, batch
+    iteration, the `continueOnFail` true/false paths, and the
+    once-per-execute credential validation.
+
 ## [0.1.3] - 2026-05-02
 
 Patch release on the back of an external audit on the public repo
