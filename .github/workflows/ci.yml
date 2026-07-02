@@ -16,7 +16,7 @@ jobs:
         # isolated-vm is not in the runtime tree) — only the dev/test toolchain needs >=22.
         node-version: ['22', '24']
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
