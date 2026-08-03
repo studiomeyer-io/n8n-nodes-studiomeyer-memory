@@ -67,7 +67,7 @@
     "vitest": "^2.1.8"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.18.0"
+    "@modelcontextprotocol/sdk": "^1.30.0"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
