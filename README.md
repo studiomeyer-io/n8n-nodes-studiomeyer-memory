@@ -151,7 +151,7 @@ Telegram Trigger
 
 ## Pricing
 
-Free tier is **200 free credits** activated by one click inside the portal at [studiomeyer.io/portal/login](https://studiomeyer.io/portal/login) (no card). Each operation (search, learn, entity-create, etc.) consumes one credit. Enough to evaluate the node and run a single bot in development. Pro is €29/month and lifts the limit to a generous monthly cap. Team is €49/month with multi-agent isolation. See [studiomeyer.io/services/memory](https://studiomeyer.io/services/memory) for the latest pricing and the per-tier cap.
+Free tier is **200 free credits** activated by one click inside the portal at [studiomeyer.io/portal/login](https://studiomeyer.io/portal/login) (no card). Each operation (search, learn, entity-create, etc.) consumes one credit. Enough to evaluate the node and run a single bot in development. Pro is €9/month and lifts the limit to a generous monthly cap. Team is €19/month with multi-agent isolation. See [studiomeyer.io/services/memory](https://studiomeyer.io/services/memory) for the latest pricing and the per-tier cap.
 
 **Hosting model.** This community node and its tests are MIT-licensed (use the node anywhere, commercial OK). The Memory **server** is currently hosted SaaS only (EU Frankfurt, Hetzner) - it is not self-hostable today. The server source lives in a private repo. If self-hosting is a hard requirement for your deployment (sovereignty, air-gap, customer contract), contact [hello@studiomeyer.io](mailto:hello@studiomeyer.io) about a commercial source-grant or managed-on-your-infra option.
 
