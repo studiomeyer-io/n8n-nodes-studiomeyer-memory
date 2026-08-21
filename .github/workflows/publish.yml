@@ -46,7 +46,19 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Skip if this version is already on npm
+        id: npmcheck
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VER=$(node -p "require('./package.json').version")
+          if npm view "$NAME@$VER" version >/dev/null 2>&1; then
+            echo "already=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::$NAME@$VER liegt bereits auf npm - Publish wird uebersprungen"
+          else
+            echo "already=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Publish to npm with provenance
+        if: steps.npmcheck.outputs.already == 'false'
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
