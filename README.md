@@ -34,7 +34,7 @@ n8n's built-in memory options (Postgres, Redis, Motorhead) handle short-term con
 - **Knowledge graph** with typed entities (people, projects, services) and relations
 - **Bi-temporal tracking** so you can query "what did we know about X on date Y?"
 - **Confidence + decay** so old contradicted facts fade automatically
-- **Multi-tenant on Supabase EU** - DSGVO-compliant by default
+- **Multi-tenant on our own Postgres in the EU** - DSGVO-compliant by default
 
 This community node connects your n8n workflows to the StudioMeyer Memory MCP server (hosted SaaS at `memory.studiomeyer.io`) and exposes the most useful operations as a clean Resource/Operation tree. The custom **Server URL** field in the credential lets enterprise customers point at a managed-on-your-infra deployment after a commercial agreement, the public self-host bundle is a planned v0.2 release.
 
