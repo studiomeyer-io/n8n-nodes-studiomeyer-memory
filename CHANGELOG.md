@@ -81,6 +81,17 @@ change for end users.
 
 ## [Unreleased]
 
+### Security
+
+- Remove Gulp from the icon build along with its unpatched braces chain. A TypeScript helper copies the node and credential icons
+  using Node.js filesystem operations.
+
+### Fixed
+
+- Await both icon-copy operations and preserve binary image bytes. Existing
+  SVG assets are unchanged; PNG fixtures retain the original source bytes.
+
+
 Drift sweep alongside the n8n-templates external audit on 2026-05-01.
 
 ### Fixed
