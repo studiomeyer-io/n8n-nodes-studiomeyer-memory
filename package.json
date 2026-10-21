@@ -33,7 +33,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && gulp build:icons",
+    "build": "tsc && node dist/scripts/copy-icons.js",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
@@ -60,7 +60,6 @@
     "@typescript-eslint/parser": "^8.70.0",
     "eslint": "^8.57.1",
     "eslint-plugin-n8n-nodes-base": "^1.16.7",
-    "gulp": "^5.0.0",
     "n8n-workflow": "^1.120.31",
     "prettier": "^3.9.8",
     "typescript": "^5.7.2",
