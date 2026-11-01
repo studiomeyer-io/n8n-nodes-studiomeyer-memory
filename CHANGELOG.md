@@ -81,6 +81,13 @@ change for end users.
 
 ## [Unreleased]
 
+
+### Dependency maintenance
+
+- Migrate development linting from ESLint8/plugin1 to ESLint10/plugin2 flat configuration. Compare community/credential/node rule dictionaries exactly; retain all four normal exceptions and the stricter prepublish naming rule.
+- The checked normal/prepublish lint, build/typecheck and 99 tests pass. Actual isolated-vm executes a synthetic operation. Existing Node engine and n8n peer contracts remain unchanged; development tooling does not extend consumer support.
+- Production audit reports zero findings. The all-dependency audit still reports three high package findings from one Zod advisory propagated through two pinned upstream Zod3 instances in n8n-workflow/expression-runtime. No advisory is ignored and no Zod4 override crosses their declared API contract. An upstream compatible fix remains required; this is not an all-dependencies-clean claim.
+
 ### Security
 
 - Remove Gulp from the icon build along with its unpatched braces chain. A TypeScript helper copies the node and credential icons

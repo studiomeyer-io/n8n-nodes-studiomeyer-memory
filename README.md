@@ -42,6 +42,12 @@ This community node connects your n8n workflows to the StudioMeyer Memory MCP se
 
 A voice agent that remembers callers across sessions. A customer support bot that knows the customer's preferences from three months ago. A personal assistant that builds a profile of you over years, not minutes. n8n is the perfect glue layer - but it lacks a real long-term memory primitive. This node fills that gap.
 
+## Dependency audit boundary
+
+The dependency check on 2026-11-01 leaves three development package findings from two upstream-pinned Zod 3 copies (`GHSA-mrhx-c7xc-m3w5`); this package's production root audit reports zero. A fresh installation that automatically resolves the unchanged `n8n-workflow: *` peer to 2.16.0 has six affected peer-package findings, including five high and one moderate. These are distinct from the development audit and are not fixed by this node's root-only overrides.
+
+The node runs inside the n8n platform and inherits its workflow/runtime dependencies. The lint update preserves the effective node rules; it does not certify an n8n installation as vulnerability-free. The upstream Zod 3 contracts are retained instead of being replaced with incompatible Zod 4 objects.
+
 ## Install
 
 In your n8n instance: **Settings → Community Nodes → Install**
