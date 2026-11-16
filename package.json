@@ -57,11 +57,11 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.7",
-    "@typescript-eslint/parser": "^8.70.0",
+    "@typescript-eslint/parser": "^8.72.2",
     "eslint": "^10.3.0",
     "eslint-plugin-n8n-nodes-base": "^2.0.0",
     "n8n-workflow": "^1.120.31",
-    "prettier": "^3.9.8",
+    "prettier": "^3.10.1",
     "typescript": "^5.7.2",
     "vitest": "^4.1.11"
   },
